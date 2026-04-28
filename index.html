@@ -587,6 +587,15 @@
       }
     }
   </style>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2148112');
+</script>
+<!-- End MailerLite Universal -->
 </head>
 <body>
 
@@ -609,7 +618,7 @@
       <p class="hero-sub">
         You're not broken. You're not lazy. Your body is changing in ways nobody prepared you for — and most of the advice out there was never designed for where you are right now. Within Your Way is different. It starts with you.
       </p>
-      <a href="#community" class="btn-primary">I'm Ready to Explore</a>
+      <a href="#subscribe" class="btn-primary">I'm Ready to Explore</a>
       <p class="hero-note">You don't have to figure this out alone.</p>
     </div>
     <div class="scroll-indicator">
@@ -696,7 +705,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta-section" id="community">
+  <section class="cta-section" id="community" style="scroll-margin-top: 0;">
     <div class="container--narrow">
       <div class="reveal">
         <span class="section-label">A different kind of wellness</span>
@@ -705,8 +714,12 @@
         <div class="cta-divider"></div>
         <p>Within Your Way is growing. If you'd like to be part of it from the beginning — to follow the journey, access the reset when it's ready, and be part of a community built on honesty rather than aspiration — come in.</p>
         <p class="cta-seat">There's a seat with your name on it.</p>
-        <a href="https://substack.com/@withinyourway" class="btn-secondary" target="_blank" rel="noopener noreferrer">Join the Community</a>
-        <p style="font-size:0.85rem;font-style:italic;color:var(--sage);margin-top:1rem;"><a href="https://substack.com/@withinyourway" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-decoration-color:var(--earth);font-weight:normal;">I write about this journey on Substack. Read it there, or subscribe to get it in your inbox.</a></p>
+        <div id="subscribe" style="margin-top: 2rem; max-width: 480px; margin-left: auto; margin-right: auto;">
+          <div class="ml-embedded" data-form="gayDpq"></div>
+        </div>
+        <p style="margin-top: 1.5rem; font-family: 'Jost', sans-serif; font-size: 0.85rem; color: #9B7B5E; font-style: italic; text-align: center;">
+          Articles and honest writing from the journey are published in the <a href="journal.html" style="color: #6B5240;">Journal</a>.
+        </p>
       </div>
     </div>
   </section>
