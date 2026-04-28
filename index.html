@@ -76,6 +76,12 @@
       text-transform: uppercase;
     }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+
     .nav-cta {
       font-family: 'Jost', sans-serif;
       font-size: 0.72rem;
@@ -587,8 +593,10 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">Within Your Way</a>
-    <a href="journal.html" class="nav-cta">Journal</a>
-    <a href="https://substack.com/@withinyourway" class="nav-cta" target="_blank" rel="noopener noreferrer">Join the Community</a>
+    <div class="nav-links">
+      <a href="journal.html" class="nav-cta">Journal</a>
+      <a href="#subscribe" class="nav-cta">Subscribe</a>
+    </div>
   </nav>
 
   <!-- HERO -->
