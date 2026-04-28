@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>This is Day 1 — Within Your Way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #F7F3EE;
+      --warm-white: #FDFAF7;
+      --sage: #8A9E8C;
+      --sage-light: #C4D0C5;
+      --earth: #9B7B5E;
+      --earth-dark: #6B5240;
+      --bark: #2C2420;
+      --mist: #E8E2DA;
+      --ink: #1E1A16;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--bark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(247, 243, 238, 0.7);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+
+    .nav-link {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--earth-dark);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--earth);
+    }
+
+    /* ─── ARTICLE HEADER ─── */
+    .article-header {
+      padding: 120px 2rem 3rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .article-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--earth);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .article-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      color: var(--bark);
+      margin-bottom: 2rem;
+    }
+
+    .article-header-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--mist);
+      border: none;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .article-body p {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #4A3F36;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── ARTICLE FOOTER ─── */
+    .article-footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+
+    .article-footer-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--mist);
+      border: none;
+      margin-bottom: 3rem;
+    }
+
+    .article-footer-inner {
+      text-align: center;
+    }
+
+    .article-subscribe-note {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--earth);
+      margin-bottom: 1.8rem;
+    }
+
+    .article-form-wrap {
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    .article-back {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--earth);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .article-back:hover {
+      color: var(--earth-dark);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bark);
+      color: #7A6E66;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+
+    footer span {
+      color: var(--earth);
+    }
+
+    /* MailerLite form overrides */
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper {
+      background-color: transparent !important;
+      border-radius: 0 !important;
+      border: none !important;
+      width: 100% !important;
+      max-width: 480px !important;
+      display: block !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer {
+      display: block !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody {
+      padding: 0 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent {
+      display: none !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+      background-color: #FDFAF7 !important;
+      border: 1px solid #E8E2DA !important;
+      border-radius: 0 !important;
+      color: #2C2420 !important;
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.9rem !important;
+      font-weight: 300 !important;
+      padding: 14px 16px !important;
+      letter-spacing: 0.04em !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::placeholder {
+      color: #9B7B5E !important;
+      font-family: 'Jost', sans-serif !important;
+      font-style: italic !important;
+      letter-spacing: 0.04em !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+      margin: 8px 0 0 0 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+      background-color: #2C2420 !important;
+      border-radius: 0 !important;
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      padding: 14px 28px !important;
+      width: 100% !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+      background-color: #1E1A16 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 300 !important;
+      font-style: italic !important;
+      font-size: 1.4rem !important;
+      color: #2C2420 !important;
+      letter-spacing: normal !important;
+      text-transform: none !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.9rem !important;
+      color: #9B7B5E !important;
+      font-weight: 300 !important;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.2rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .article-header {
+        padding-top: 100px;
+      }
+    }
+  </style>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2148112');
+</script>
+<!-- End MailerLite Universal -->
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Within Your Way</a>
+    <div class="nav-links">
+      <a href="journal.html" class="nav-link">Journal</a>
+      <a href="index.html#subscribe" class="nav-link">Subscribe</a>
+    </div>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <span class="article-eyebrow">Journal — April 2026</span>
+    <h1>This is Day 1</h1>
+    <hr class="article-header-rule" />
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+    <p>I decided to do something I'd been putting off for a long time — a reset for myself, around 21 days — not a diet, not a detox, just an experiment in paying closer attention to what my body actually needs. I'm building it day by day as I go. And I've decided to share it here, honestly, as it happens.</p>
+    <p>Today was my Day 1. And straight away I noticed something I wasn't expecting. I felt okay. I wasn't hyped up and mega motivated, I wasn't sad. I didn't feel any type of worry about being able to commit to the 21 days I plan to do this for. And that was for one simple reason. This is all an experiment. Trying things, learning about me, my body and what it needs. I am creating this day by day.</p>
+    <p>And so Day 1 wasn't about what I ate, how much I worked out, what I cut out. It was about what I saw.</p>
+    <p>So I want to be honest about how Day 1 actually went — not a curated version where everything clicks into place and you feel quietly transformed by lunchtime. The real version, and the only version worth sharing.</p>
+    <p>I started the morning with a small change. Instead of my instant coffee with almond milk I had a warm glass of water before anything else. I had intended on warm water with lemon but ended up without lemon, because the one I thought I had was nestled under some wrinkly clementines and had turned a nice shade of blue. So it was just warm water, drunk slowly, before my phone, before my breakfast, before I let anything outside into my day. It seems like such a small thing, but it made me proud. It was a change, and that was what I had intended.</p>
+    <p>Breakfast was eggs, spinach, and a slice of rye bread. I ate while sitting at the table and left my phone on the kitchen counter so I wouldn't be tempted to scroll. When I finished, I wrote down what I had consumed. And that act of writing it down — that's where things started to get interesting.</p>
+    <p>Because later in the day, I caught myself doing something I'd never really seen before. I opened the fridge. Not because I was hungry. Not because I was craving anything in particular. Just — I opened the fridge. And then I opened a cupboard. And then I stood there, looking at nothing, and closed it again.</p>
+    <p>I did this several times throughout the day.</p>
+    <p>I'm still thinking about what that means. Was it boredom? Habit? Some kind of emotional reaching? I don't know yet. But I wouldn't have seen it at all if I hadn't been paying attention. That's the thing about Day 1 — for once it's not about changing everything I am doing. It's about finally looking at what I'm doing.</p>
+    <p>I had a lot to do during the day and by the time 2 o'clock came I was really hungry. I hadn't planned as I wanted to so I grabbed what was in the fridge which was tuna mayo with green onions. I ate that in a roll, grabbed it in a hurry. And I felt awful afterwards. As I always do. Bloated, flat, sore ear, and that familiar foggy discomfort I know so well. What struck me wasn't the feeling itself. It was the realisation that I've been having this reaction — to bread, to tuna, to that combination, I'm not sure which part of it — for a long time. And I've just been living through it. Taking a painkiller, waiting for it to pass, moving on. Treating my own body's signals like a minor inconvenience rather than useful information.</p>
+    <p>That felt significant. Not groundbreaking as I had known this for a long time — just significant. My body has been trying to tell me something and I've been too busy to listen. Or really not wanting to listen. Because I enjoyed eating these things and just accepted the aftermath, treating it like an inconvenience rather than a message, that this wasn't the right thing for me.</p>
+    <p>I had promised myself I would get outside and so I headed out, dropping off my ground breaking Vinted sale which propped up my bank account by a whopping 4 pounds (but every little helps). I walked past a stream and decided to sit there for a while and just listen, smell, breathe. I didn't listen to music. I just sat and watched the water, listened to the wind in the trees. I sat as long as my attention span allowed. It was lovely.</p>
+    <p>The evening was harder. I was tired earlier than usual and went to bed — which felt like a win — but woke a couple of hours later and couldn't get back to sleep. My mind had things it apparently needed to process. I lay there for a while, tired, awake, a little frustrated, a little bit anxious, but also — underneath all of that — something that felt a bit like relief.</p>
+    <p>I had actually started. After all the thinking and planning and preparing — I had just started. And Day 1 was done. And the best part of it was, I am in control of this. There was no failure today. No 'I'll start again tomorrow.' Because this is for me. And what works for me. And it'll take as long as it takes.</p>
+    <p>That's what I'm taking into Day 2. Not a plan. Just the same attention and intention. Let's see what we find tomorrow and beyond.</p>
+  </article>
+
+  <!-- ARTICLE FOOTER -->
+  <div class="article-footer">
+    <hr class="article-footer-rule" />
+    <div class="article-footer-inner">
+      <p class="article-subscribe-note">If this resonated, you can subscribe below — I write when I have something worth saying.</p>
+      <div class="article-form-wrap">
+        <div class="ml-embedded" data-form="gayDpq"></div>
+      </div>
+      <a href="journal.html" class="article-back">← Back to Journal</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span>Within Your Way</span></p>
+  </footer>
+
+</body>
+</html>
