@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>When did you stop recognising yourself? — Within Your Way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #F7F3EE;
+      --warm-white: #FDFAF7;
+      --sage: #8A9E8C;
+      --sage-light: #C4D0C5;
+      --earth: #9B7B5E;
+      --earth-dark: #6B5240;
+      --bark: #2C2420;
+      --mist: #E8E2DA;
+      --ink: #1E1A16;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--bark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(247, 243, 238, 0.7);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+
+    .nav-link {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--earth-dark);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--earth);
+    }
+
+    /* ─── ARTICLE HEADER ─── */
+    .article-header {
+      padding: 120px 2rem 3rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .article-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--earth);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .article-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      color: var(--bark);
+      margin-bottom: 2rem;
+    }
+
+    .article-header-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--mist);
+      border: none;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .article-body p {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #4A3F36;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── ARTICLE FOOTER ─── */
+    .article-footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+
+    .article-footer-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--mist);
+      border: none;
+      margin-bottom: 3rem;
+    }
+
+    .article-footer-inner {
+      text-align: center;
+    }
+
+    .article-subscribe-note {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--earth);
+      margin-bottom: 1.8rem;
+    }
+
+    .article-form-wrap {
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    .article-back {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--earth);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .article-back:hover {
+      color: var(--earth-dark);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bark);
+      color: #7A6E66;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+
+    footer span {
+      color: var(--earth);
+    }
+
+    /* MailerLite form overrides */
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper {
+      background-color: transparent !important;
+      border-radius: 0 !important;
+      border: none !important;
+      width: 100% !important;
+      max-width: 480px !important;
+      display: block !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer {
+      display: block !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody {
+      padding: 0 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent {
+      display: none !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+      background-color: #FDFAF7 !important;
+      border: 1px solid #E8E2DA !important;
+      border-radius: 0 !important;
+      color: #2C2420 !important;
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.9rem !important;
+      font-weight: 300 !important;
+      padding: 14px 16px !important;
+      letter-spacing: 0.04em !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::placeholder {
+      color: #9B7B5E !important;
+      font-family: 'Jost', sans-serif !important;
+      font-style: italic !important;
+      letter-spacing: 0.04em !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+      margin: 8px 0 0 0 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+      background-color: #2C2420 !important;
+      border-radius: 0 !important;
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      padding: 14px 28px !important;
+      width: 100% !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+      background-color: #1E1A16 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 300 !important;
+      font-style: italic !important;
+      font-size: 1.4rem !important;
+      color: #2C2420 !important;
+      letter-spacing: normal !important;
+      text-transform: none !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.9rem !important;
+      color: #9B7B5E !important;
+      font-weight: 300 !important;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.2rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .article-header {
+        padding-top: 100px;
+      }
+    }
+  </style>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2148112');
+</script>
+<!-- End MailerLite Universal -->
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Within Your Way</a>
+    <div class="nav-links">
+      <a href="journal.html" class="nav-link">Journal</a>
+      <a href="index.html#subscribe" class="nav-link">Subscribe</a>
+    </div>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <span class="article-eyebrow">Journal — April 2026</span>
+    <h1>When did you stop recognising yourself?</h1>
+    <hr class="article-header-rule" />
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+    <p>Because at some point, I stopped recognising myself.</p>
+    <p>I was exhausted. Trying to change. Falling back into the same patterns — and my body (and mind) never quite felt better.</p>
+    <p>This didn't happen overnight or dramatically. Nothing catastrophic happened. It was quieter than that — a slow accumulation of things that felt slightly off.</p>
+    <p>Energy that used to be reliable, wasn't. Sleep that used to come easily, didn't. I could start the day with good intentions — and still find myself back in the same habits by the afternoon.</p>
+    <p>I had a sense that the things I'd always done to feel well had quietly stopped working — and nobody could quite tell me why.</p>
+    <p>Sound familiar?</p>
+    <p>So I did what most of us do. I Googled. I read. I tried things.</p>
+    <p>I followed advice that was confidently given but frustratingly generic. Eat this. Avoid that. Do this programme. Follow this plan.</p>
+    <p>Some of it helped — for a while, for some things. But none of it felt like it was really written for me. For the specific, complicated, individual person that I am.</p>
+    <p>That's when something shifted.</p>
+    <p>There is no universal answer. There is only what works for you — in your body, in your life, right now.</p>
+    <p>So I started paying closer attention. I went deeper. I began treating myself as my own first case — with curiosity instead of frustration, with patience instead of pressure.</p>
+    <p>I'm still in that process. I don't have it all figured out. I'm not on the other side of anything, looking back with neat conclusions.</p>
+    <p>I'm in it.</p>
+    <p>And that is exactly why this space exists.</p>
+    <p>Within Your Way is a community for women who are done with one-size-fits-all solutions to deeply personal problems. Who have tried to 'do the right things' — and still don't feel right in their body.</p>
+    <p>It's a place to explore — hormones, gut health, sleep, nutrition, stress, lifestyle — not as a checklist, but as a conversation. With the research. With each other. With yourself.</p>
+    <p>Here, you won't be told what to do. You'll be given tools, information, and space to figure out what actually works for you — like I'm doing.</p>
+    <p>I'll share what I'm learning, what I'm trying, what's working — and just as importantly, what isn't. I'll dig into the science without burying you in jargon. I'll question the advice that's given too confidently. And I'll keep coming back to this:</p>
+    <p>The goal isn't to follow someone else's blueprint. It's to build your own.</p>
+    <p>I'm glad you're here. Wherever you are, and whatever you need — we'll work on finding that out together.</p>
+  </article>
+
+  <!-- ARTICLE FOOTER -->
+  <div class="article-footer">
+    <hr class="article-footer-rule" />
+    <div class="article-footer-inner">
+      <p class="article-subscribe-note">If this resonated, you can subscribe below — I write when I have something worth saying.</p>
+      <div class="article-form-wrap">
+        <div class="ml-embedded" data-form="gayDpq"></div>
+      </div>
+      <a href="journal.html" class="article-back">← Back to Journal</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span>Within Your Way</span></p>
+  </footer>
+
+</body>
+</html>
