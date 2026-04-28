@@ -681,13 +681,7 @@
 <body>
 
   <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">Within Your Way</a>
-    <div class="nav-links">
-      <a href="journal.html" class="nav-cta">Journal</a>
-      <a href="#subscribe" class="nav-cta">Subscribe</a>
-    </div>
-  </nav>
+  <div id="nav-placeholder"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -832,13 +826,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer style="background: #2C2420; color: #C4B8AE; text-align: center; padding: 2.4rem 2rem; font-size: 0.76rem; letter-spacing: 0.08em; border-top: 1px solid rgba(255,255,255,0.05);">
-    <p style="margin-bottom: 0.6rem;">© 2026 Within Your Way</p>
-    <a href="https://www.instagram.com/withinyourway" target="_blank" rel="noopener noreferrer" class="footer-ig" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #C4B8AE; text-decoration: none; font-size: 0.75rem; letter-spacing: 0.12em;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-      @withinyourway
-    </a>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <script>
     // Scroll reveal
@@ -853,5 +841,19 @@
 
     reveals.forEach(el => observer.observe(el));
   </script>
+  <script>
+  fetch('/nav.html').then(r => r.text()).then(html => {
+    document.getElementById('nav-placeholder').innerHTML = html;
+    const nav = document.getElementById('site-nav');
+    if (nav) {
+      window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+      });
+    }
+  });
+  fetch('/footer.html').then(r => r.text()).then(html => {
+    document.getElementById('footer-placeholder').innerHTML = html;
+  });
+</script>
 </body>
 </html>
