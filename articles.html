@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing — Within Your Way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #F7F3EE;
+      --warm-white: #FDFAF7;
+      --sage: #8A9E8C;
+      --sage-light: #C4D0C5;
+      --earth: #9B7B5E;
+      --earth-dark: #6B5240;
+      --bark: #2C2420;
+      --mist: #E8E2DA;
+      --ink: #1E1A16;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(247, 243, 238, 0.7);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-cta {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--earth-dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--earth);
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      color: var(--earth);
+      border-color: transparent;
+    }
+
+    .nav-cta--active {
+      color: var(--earth);
+      border-color: transparent;
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 12rem 2rem 5rem;
+      text-align: center;
+      background-color: var(--warm-white);
+    }
+
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+
+    .page-header-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.88rem, 1.4vw, 1rem);
+      font-weight: 300;
+      color: #5A4E44;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── ARTICLES ─── */
+    .articles-section {
+      padding: 5rem 2rem 8rem;
+    }
+
+    .articles-grid {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .article-card {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--mist);
+    }
+
+    .article-card:first-child {
+      border-top: 1px solid var(--mist);
+    }
+
+    .article-date {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--earth);
+      display: block;
+      margin-bottom: 0.9rem;
+    }
+
+    .article-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .article-excerpt {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.88rem, 1.3vw, 0.97rem);
+      font-weight: 300;
+      color: #4A3F36;
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+      max-width: 600px;
+    }
+
+    .article-read {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--earth);
+      text-decoration: none;
+      border-bottom: 1px solid var(--earth);
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .article-read:hover {
+      color: var(--earth-dark);
+      border-color: var(--earth-dark);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bark);
+      color: #7A6E66;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+
+    footer span {
+      color: var(--earth);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal--delay-1 { transition-delay: 0.1s; }
+    .reveal--delay-2 { transition-delay: 0.2s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.2rem 1.5rem;
+      }
+
+      .page-header {
+        padding: 10rem 1.5rem 4rem;
+      }
+
+      .articles-section {
+        padding: 3rem 1.5rem 6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Within Your Way</a>
+    <a href="articles.html" class="nav-cta nav-cta--active">Writing</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1>Writing</h1>
+    <p class="page-header-sub">Honest notes from the journey — shared as they happen.</p>
+  </header>
+
+  <!-- ARTICLES -->
+  <section class="articles-section">
+    <div class="articles-grid">
+
+      <article class="article-card reveal">
+        <span class="article-date">April 2026</span>
+        <h2 class="article-title">When did you stop recognising yourself?</h2>
+        <p class="article-excerpt">The beginning of Within Your Way — and why it exists. Not a programme, not a plan. Just an honest starting point.</p>
+        <a href="#" class="article-read">Read</a>
+      </article>
+
+      <article class="article-card reveal reveal--delay-1">
+        <span class="article-date">April 2026</span>
+        <h2 class="article-title">This is Day 1</h2>
+        <p class="article-excerpt">What actually happened on the first day of my Reset. Not a curated version — the real one, including a blue lemon and a fridge I kept opening for no reason.</p>
+        <a href="#" class="article-read">Read</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span>Within Your Way</span> · Annie · Integrative Nutrition Health Coach</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
