@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Journal — Within Your Way</title>
+  <title>It's Not the Be All and End All. But It Is Nice. — Within Your Way</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
@@ -99,19 +99,14 @@
       color: var(--earth);
     }
 
-    .nav-link--active {
-      color: var(--earth);
-      border-bottom-color: var(--earth);
-    }
-
-    /* ─── PAGE HERO ─── */
-    .page-hero {
-      padding: 120px 2rem 4rem;
+    /* ─── ARTICLE HEADER ─── */
+    .article-header {
+      padding: 120px 2rem 3rem;
       max-width: 780px;
       margin: 0 auto;
     }
 
-    .page-hero-eyebrow {
+    .article-eyebrow {
       font-family: 'Jost', sans-serif;
       font-size: 0.68rem;
       font-weight: 500;
@@ -122,86 +117,77 @@
       margin-bottom: 1.2rem;
     }
 
-    .page-hero h1 {
+    .article-header h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       font-style: italic;
-      font-size: clamp(3.2rem, 7vw, 5.5rem);
-      line-height: 1.05;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
       color: var(--bark);
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
 
-    .page-hero-sub {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #5A4E44;
-      margin-bottom: 2.5rem;
-    }
-
-    .page-hero-rule {
+    .article-header-rule {
       width: 100%;
       height: 1px;
       background: var(--mist);
       border: none;
     }
 
-    /* ─── ARTICLES ─── */
-    .articles-section {
-      max-width: 780px;
+    /* ─── ARTICLE BODY ─── */
+    .article-body {
+      max-width: 680px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
     }
 
-    .article-entry {
-      padding: 2.8rem 0;
-      border-bottom: 1px solid var(--mist);
-    }
-
-    .article-entry:first-child {
-      padding-top: 0;
-    }
-
-    .article-date {
+    .article-body p {
       font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--earth);
-      display: block;
-      margin-bottom: 0.7rem;
-    }
-
-    .article-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-style: italic;
-      font-size: 1.8rem;
-      line-height: 1.2;
-      color: #2C2420;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.9rem;
-      transition: color 0.2s ease;
-    }
-
-    .article-title:hover {
-      color: var(--earth-dark);
-    }
-
-    .article-excerpt {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 300;
-      color: #5A4E44;
-      line-height: 1.8;
-      margin-bottom: 1.2rem;
-      max-width: 580px;
+      line-height: 1.9;
+      color: #4A3F36;
+      margin-bottom: 1.6rem;
     }
 
-    .article-read {
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── ARTICLE FOOTER ─── */
+    .article-footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+
+    .article-footer-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--mist);
+      border: none;
+      margin-bottom: 3rem;
+    }
+
+    .article-footer-inner {
+      text-align: center;
+    }
+
+    .article-subscribe-note {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--earth);
+      margin-bottom: 1.8rem;
+    }
+
+    .article-form-wrap {
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    .article-back {
       font-family: 'Jost', sans-serif;
       font-size: 0.7rem;
       font-weight: 500;
@@ -212,7 +198,7 @@
       transition: color 0.2s ease;
     }
 
-    .article-read:hover {
+    .article-back:hover {
       color: var(--earth-dark);
     }
 
@@ -228,21 +214,6 @@
 
     footer span {
       color: var(--earth);
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
-      nav {
-        padding: 1.2rem 1.5rem;
-      }
-
-      .nav-links {
-        gap: 1.5rem;
-      }
-
-      .page-hero {
-        padding-top: 100px;
-      }
     }
 
     .footer-ig { opacity: 0.8; transition: opacity 0.2s ease; }
@@ -315,6 +286,21 @@
       color: #9B7B5E !important;
       font-weight: 300 !important;
     }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.2rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .article-header {
+        padding-top: 100px;
+      }
+    }
   </style>
 <!-- MailerLite Universal -->
 <script>
@@ -325,15 +311,15 @@
     ml('account', '2148112');
 </script>
 <!-- End MailerLite Universal -->
-<meta name="description" content="Within Your Way — honest, personal writing about midlife health, hormones, and finding what actually works for you." />
-<meta property="og:title" content="Within Your Way" />
-<meta property="og:description" content="When did you stop recognising yourself? Honest writing about midlife health — shared as it happens." />
+<meta name="description" content="I didn't start paying attention so that I would lose weight. But seeing the scale move is a nice byproduct. On what we've got wrong about the scale — in both directions." />
+<meta property="og:title" content="It's Not the Be All and End All. But It Is Nice. — Within Your Way" />
+<meta property="og:description" content="I didn't start paying attention so that I would lose weight. But seeing the scale move is a nice byproduct. On what we've got wrong about the scale — in both directions." />
 <meta property="og:image" content="https://www.withinyourway.com/about.png" />
-<meta property="og:url" content="https://www.withinyourway.com" />
+<meta property="og:url" content="https://www.withinyourway.com/its-not-the-be-all-and-end-all-but-it-is-nice" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Within Your Way" />
-<meta name="twitter:description" content="When did you stop recognising yourself? Honest writing about midlife health — shared as it happens." />
+<meta name="twitter:title" content="It's Not the Be All and End All. But It Is Nice. — Within Your Way" />
+<meta name="twitter:description" content="I didn't start paying attention so that I would lose weight. But seeing the scale move is a nice byproduct. On what we've got wrong about the scale — in both directions." />
 <meta name="twitter:image" content="https://www.withinyourway.com/about.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
@@ -348,48 +334,45 @@
     </div>
   </nav>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <span class="page-hero-eyebrow">Within Your Way</span>
-    <h1>Journal</h1>
-    <p class="page-hero-sub">Honest notes from the journey — shared as they happen.</p>
-    <hr class="page-hero-rule" />
-  </div>
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <span class="article-eyebrow">Journal — May 2026</span>
+    <h1>It's Not the Be All and End All. But It Is Nice.</h1>
+    <hr class="article-header-rule" />
+  </header>
 
-  <!-- ARTICLES -->
-  <section class="articles-section">
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+    <p>It's not the be all and end all. But it is nice to see the scale moving down.</p>
+    <p>This was something I said to someone yesterday, and they brought it back up to me later, saying: "that's the key. The outcomes of what you are doing matter." And I've been turning this over since.</p>
+    <p>We've been told two things, depending on which corner of the internet you've been spending time in.</p>
+    <p>The old version: the number on the scale is everything. Chase it. Measure yourself against it. Let it tell you whether you've been good or bad this week.</p>
+    <p>The newer version — the correction — is: ignore the scale entirely. It means nothing. It's a toxic artefact of diet culture and you should throw it out the window.</p>
+    <p>I understand both. I've lived inside both. Neither has ever felt completely honest to me.</p>
+    <p>The truth is, I didn't start paying attention so that I would lose weight. I made a conscious decision to slow down and notice — to stop ignoring the signals my body had been sending for a long time. Not just to do with food or exercise, but everything that was affecting my wellbeing. And to do it without trying to change everything overnight, because that hasn't worked for me before.</p>
+    <p>And the first things I noticed had nothing to do with the scale.</p>
+    <p>I have food intolerances that have been causing me more and more physical symptoms over the years. If I eat bread, for example: I crash. I bloat. My ear hurts. I feel tired enough to sleep. And yet I was eating it every day — more than once most of the time — taking pills, complaining, and going about my day.</p>
+    <p>Now I'm trying to be conscious. Writing down how things make me feel. Timings, symptoms. Trying to think about why I made a choice, and consciously not make it again that day. I feel something close to achievement when I choose something that's going to fuel me instead of making the same choice mindlessly, over and over.</p>
+    <p>The biggest reason I decided to do this was to get to know myself. Because the hard truth is: I don't recognise myself anymore. And I am trying to treat myself as I would a friend who came to me and said that. I wouldn't brush them off. I would be kind. I would listen. I would offer ideas for changes that might help.</p>
+    <p>I haven't done that for myself. I've been judgemental and harsh, quick to give up and criticise. I've consumed content about the latest thing that will change your life, get the old you back, lose ten years — if you just do what they do.</p>
+    <p>It didn't work. Because I am not them. They don't live in my world, with my life and my schedule and my constraints and my beliefs. Only I do that.</p>
+    <p>So. Seeing the scale move down — marginally, at an early stage — is a nice byproduct. Perhaps my body is responding to the fact that I'm paying attention. Starting to get what it needs, rather than following habit or urge.</p>
+    <p>It isn't the be all and end all. But it is nice.</p>
+    <p>I'm just learning. Some days are a real struggle and I am definitely not the poster child for the right choices at all times. But the one thing I am being rigorous about is noticing how things make me feel — and using that to try to drive the next choice.</p>
+    <p>If any of this resonates, I'd love to hear about it. There is so much perfect progress shown to us every day, and it doesn't feel like reality to me. Real life is ups and downs and learning and trying again. And again. Rinse and repeat.</p>
+  </article>
 
-    <article class="article-entry">
-      <span class="article-date">May 2026</span>
-      <a href="/its-not-the-be-all-and-end-all-but-it-is-nice" class="article-title">It's Not the Be All and End All. But It Is Nice.</a>
-      <p class="article-excerpt">I didn't start paying attention so that I would lose weight. But seeing the scale move is a nice byproduct. On what we've got wrong about the scale — in both directions.</p>
-      <a href="/its-not-the-be-all-and-end-all-but-it-is-nice" class="article-read">Read →</a>
-    </article>
-
-    <article class="article-entry">
-      <span class="article-date">April 2026</span>
-      <a href="when-did-you-stop-recognising-yourself.html" class="article-title">When did you stop recognising yourself?</a>
-      <p class="article-excerpt">The beginning of Within Your Way — and why it exists. Not a programme, not a plan. Just an honest starting point.</p>
-      <a href="when-did-you-stop-recognising-yourself.html" class="article-read">Read →</a>
-    </article>
-
-    <article class="article-entry">
-      <span class="article-date">April 2026</span>
-      <a href="this-is-day-1.html" class="article-title">This is Day 1</a>
-      <p class="article-excerpt">What actually happened on the first day of my Reset. Not a curated version — the real one, including a blue lemon and a fridge I kept opening for no reason.</p>
-      <a href="this-is-day-1.html" class="article-read">Read →</a>
-    </article>
-
-  </section>
-
-  <!-- SUBSCRIBE -->
-  <section style="padding: 4rem 2rem 6rem; text-align: center; border-top: 1px solid var(--mist);">
-    <div style="max-width: 480px; margin: 0 auto;">
-      <span style="font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--earth); display: block; margin-bottom: 1rem;">Stay in the loop</span>
-      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; font-weight: 300; color: var(--bark); line-height: 1.4; margin-bottom: 2rem;">Get new writing delivered to your inbox as it happens.</p>
-      <div id="subscribe" class="ml-embedded" data-form="gayDpq"></div>
+  <!-- ARTICLE FOOTER -->
+  <div class="article-footer">
+    <hr class="article-footer-rule" />
+    <div class="article-footer-inner">
+      <p class="article-subscribe-note">If this resonated, you can subscribe below — I write when I have something worth saying.</p>
+      <div class="article-form-wrap">
+        <div class="ml-embedded" data-form="gayDpq"></div>
+      </div>
+      <a href="journal.html" class="article-back">← Back to Journal</a>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer style="background: #2C2420; text-align: center; padding: 2.4rem 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
