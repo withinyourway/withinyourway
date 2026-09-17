@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Within Your Way — Something is Coming</title>
+  <title>Within Your Way</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -19,19 +19,27 @@
       --mist: #E8E2DA;
       --ink: #1E1A16;
     }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: var(--warm-white);
+      background-color: var(--cream);
       color: var(--ink);
       font-family: 'Jost', sans-serif;
       font-weight: 300;
       line-height: 1.7;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      min-height: 100svh;
+      overflow-x: hidden;
     }
+
+    /* Grain overlay */
     body::before {
       content: '';
       position: fixed;
@@ -41,88 +49,811 @@
       z-index: 1000;
       opacity: 0.4;
     }
-    .bg-circle { position: fixed; border-radius: 50%; pointer-events: none; }
-    .bg-circle--1 {
-      width: 60vw; height: 60vw; top: -15vw; right: -20vw;
-      background: radial-gradient(circle, var(--sage-light) 0%, transparent 70%);
-      opacity: 0.35;
-    }
-    .bg-circle--2 {
-      width: 40vw; height: 40vw; bottom: -10vw; left: -5vw;
-      background: radial-gradient(circle, #D4C4B0 0%, transparent 70%);
-      opacity: 0.35;
-    }
+
+    /* ─── NAV ─── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: center; align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 1.5rem 3rem;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       background: rgba(247, 243, 238, 0.7);
     }
+
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 300; font-size: 1.1rem;
-      letter-spacing: 0.12em; color: var(--ink);
-      text-decoration: none; text-transform: uppercase;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: uppercase;
     }
-    .inner {
-      max-width: 620px; text-align: center;
-      padding: 2rem; position: relative; z-index: 1;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
     }
-    .eyebrow {
-      font-size: 0.7rem; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--earth);
+
+    .nav-cta {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--earth-dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--earth);
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      color: var(--earth);
+      border-color: transparent;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 2rem 5rem;
+      background-color: var(--warm-white);
+    }
+
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--sage-light) 0%, transparent 70%);
+      opacity: 0.35;
+    }
+
+    .hero-bg-circle--1 {
+      width: 60vw;
+      height: 60vw;
+      top: -15vw;
+      right: -20vw;
+    }
+
+    .hero-bg-circle--2 {
+      width: 40vw;
+      height: 40vw;
+      bottom: -10vw;
+      left: -5vw;
+      background: radial-gradient(circle, #D4C4B0 0%, transparent 70%);
+    }
+
+    .hero-inner {
+      max-width: 780px;
+      text-align: center;
+      position: relative;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--earth);
       margin-bottom: 2rem;
       animation: fadeUp 1.2s ease 0.1s both;
     }
-    h1 {
+
+    .hero h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 1.15; color: var(--ink);
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 1.12;
+      color: var(--ink);
       margin-bottom: 2rem;
       animation: fadeUp 1.2s ease 0.2s both;
     }
-    h1 em { font-style: italic; color: var(--earth-dark); }
-    .rule {
-      width: 40px; height: 1px;
-      background: var(--earth);
-      margin: 0 auto 2rem;
-      animation: fadeUp 1.2s ease 0.3s both;
-    }
-    .sign-off {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 1.1rem;
+
+    .hero h1 em {
+      font-style: italic;
       color: var(--earth-dark);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      color: #5A4E44;
+      max-width: 560px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.85;
+      animation: fadeUp 1.2s ease 0.35s both;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--sage);
+      margin-top: 1.2rem;
+      font-style: italic;
       animation: fadeUp 1.2s ease 0.5s both;
     }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      background: var(--earth-dark);
+      padding: 1rem 2.6rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s ease, transform 0.2s ease;
+      animation: fadeUp 1.2s ease 0.45s both;
+    }
+
+    .btn-primary:hover {
+      background: var(--bark);
+      transform: translateY(-1px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeUp 1.2s ease 0.8s both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--earth), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: 7rem 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .container--narrow {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 2rem;
+      color: var(--ink);
+    }
+
+    h2 em {
+      font-style: italic;
+      color: var(--earth-dark);
+    }
+
+    p {
+      color: #4A3F36;
+      font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+      margin-bottom: 1.4rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── MIRROR SECTION ─── */
+    .mirror {
+      background-color: var(--mist);
+    }
+
+    .mirror-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .mirror-aside {
+      padding-top: 0.6rem;
+    }
+
+    .mirror-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--earth);
+      margin-bottom: 1.5rem;
+    }
+
+    .mirror-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--earth-dark);
+      line-height: 1.5;
+    }
+
+    /* ─── PHASES ─── */
+    .phases {
+      background-color: var(--warm-white);
+    }
+
+    .phases-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .phases-header h2 {
+      margin-bottom: 1rem;
+    }
+
+    .phases-header p {
+      color: #6B5A4E;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--mist);
+    }
+
+    .phase {
+      padding: 3rem 2.2rem;
+      border-right: 1px solid var(--mist);
+      position: relative;
+      transition: background 0.3s ease;
+    }
+
+    .phase:last-child {
+      border-right: none;
+    }
+
+    .phase:hover {
+      background: var(--cream);
+    }
+
+    .phase-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--mist);
+      line-height: 1;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .phase:hover .phase-number {
+      color: var(--sage-light);
+    }
+
+    .phase-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .phase h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .phase p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #5A4E44;
+    }
+
+    .phases-footer {
+      text-align: center;
+      margin-top: 3.5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--mist);
+    }
+
+    .phases-footer p {
+      max-width: 580px;
+      margin: 0 auto 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .phases-footer p strong {
+      font-weight: 500;
+      color: var(--earth-dark);
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background-color: var(--bark);
+      color: var(--cream);
+    }
+
+    .about .container {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-aside {
+      position: sticky;
+      top: 7rem;
+    }
+
+    .about-photo-placeholder {
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #3D2E26 0%, #5A3D2E 100%);
+      border-radius: 2px;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    .about-photo-caption {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--sage-light);
+      opacity: 0.8;
+    }
+
+    .about h2 {
+      color: var(--cream);
+    }
+
+    .about h2 em {
+      color: var(--sage-light);
+    }
+
+    .about p {
+      color: #C4B8AE;
+    }
+
+    .about .section-label {
+      color: var(--sage);
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: linear-gradient(160deg, var(--warm-white) 0%, var(--mist) 100%);
+      text-align: center;
+      padding: 9rem 2rem;
+    }
+
+    .cta-section h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section p {
+      max-width: 540px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .cta-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--earth);
+      margin: 2.5rem auto;
+    }
+
+    .cta-seat {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--earth-dark);
+      margin-bottom: 2.5rem !important;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--earth-dark);
+      border: 1px solid var(--earth);
+      padding: 1rem 2.6rem;
+      text-decoration: none;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--earth-dark);
+      color: var(--cream);
+      transform: translateY(-1px);
+    }
+
+    /* ─── FOOTER ─── */
     footer {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      background: var(--bark); color: #7A6E66;
-      text-align: center; padding: 1.2rem;
-      font-size: 0.78rem; letter-spacing: 0.05em; z-index: 100;
+      background: var(--bark);
+      color: #7A6E66;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
     }
-    footer span { color: var(--earth); }
+
+    footer span {
+      color: var(--earth);
+    }
+
+    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    @media (max-width: 768px) { nav { padding: 1.2rem 1.5rem; } }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* Scroll-triggered reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal--delay-1 { transition-delay: 0.1s; }
+    .reveal--delay-2 { transition-delay: 0.2s; }
+    .reveal--delay-3 { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.2rem 1.5rem;
+      }
+
+      .mirror-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .mirror-aside {
+        display: none;
+      }
+
+      .phases-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phase {
+        border-right: none;
+        border-bottom: 1px solid var(--mist);
+      }
+
+      .phase:last-child {
+        border-bottom: none;
+      }
+
+      .about .container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-aside {
+        position: static;
+        max-width: 280px;
+      }
+    }
+
+    .footer-ig { opacity: 0.8; transition: opacity 0.2s ease; }
+    .footer-ig:hover { opacity: 1; }
+
+    /* MailerLite form overrides */
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper {
+      background-color: transparent !important;
+      border-radius: 0 !important;
+      border: none !important;
+      width: 100% !important;
+      max-width: 480px !important;
+      display: block !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer {
+      display: block !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody {
+      padding: 0 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent {
+      display: none !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+      background-color: #FDFAF7 !important;
+      border: 1px solid #E8E2DA !important;
+      border-radius: 0 !important;
+      color: #2C2420 !important;
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.9rem !important;
+      font-weight: 300 !important;
+      padding: 14px 16px !important;
+      letter-spacing: 0.04em !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::placeholder {
+      color: #9B7B5E !important;
+      font-family: 'Jost', sans-serif !important;
+      font-style: italic !important;
+      letter-spacing: 0.04em !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+      margin: 8px 0 0 0 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+      background-color: #2C2420 !important;
+      border-radius: 0 !important;
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      padding: 14px 28px !important;
+      width: 100% !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+      background-color: #1E1A16 !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 300 !important;
+      font-style: italic !important;
+      font-size: 1.4rem !important;
+      color: #2C2420 !important;
+      letter-spacing: normal !important;
+      text-transform: none !important;
+    }
+    #mlb2-40542937.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.9rem !important;
+      color: #9B7B5E !important;
+      font-weight: 300 !important;
+    }
   </style>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2148112');
+</script>
+<!-- End MailerLite Universal -->
+<meta name="description" content="Within Your Way — honest, personal writing about midlife health, hormones, and finding what actually works for you." />
+<meta property="og:title" content="Within Your Way" />
+<meta property="og:description" content="When did you stop recognising yourself? Honest writing about midlife health — shared as it happens." />
+<meta property="og:image" content="https://www.withinyourway.com/about.png" />
+<meta property="og:url" content="https://www.withinyourway.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Within Your Way" />
+<meta name="twitter:description" content="When did you stop recognising yourself? Honest writing about midlife health — shared as it happens." />
+<meta name="twitter:image" content="https://www.withinyourway.com/about.png" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
-  <div class="bg-circle bg-circle--1"></div>
-  <div class="bg-circle bg-circle--2"></div>
-  <nav><a href="#" class="nav-logo">Within Your Way</a></nav>
-  <div class="inner">
-    <p class="eyebrow">Something is taking shape</p>
-    <h1>We're working on <em>something</em> for you</h1>
-    <div class="rule"></div>
-    <p class="sign-off">See you soon.</p>
-  </div>
-  <footer>
-    <p>© 2026 <span>Within Your Way</span></p>
+
+  <!-- NAV -->
+  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 3rem; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(247,243,238,0.85); border-bottom: 1px solid rgba(155,123,94,0.12);">
+    <a href="/index.html" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1rem; letter-spacing: 0.16em; text-transform: uppercase; color: #2C2420; text-decoration: none;">Within Your Way</a>
+    <div style="display: flex; align-items: center; gap: 2rem;">
+      <a href="/journal.html" style="font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: #6B5240; text-decoration: none;">Journal</a>
+      <a href="/index.html#subscribe" style="font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #FDFAF7; background: #6B5240; padding: 0.65rem 1.6rem; text-decoration: none;">Subscribe</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-circle hero-bg-circle--1"></div>
+    <div class="hero-bg-circle hero-bg-circle--2"></div>
+    <div class="hero-inner">
+<h1>When did you stop <em>recognising</em> yourself?</h1>
+      <p class="hero-sub">
+        You're not broken. You're not lazy. Your body is changing in ways nobody prepared you for — and most of the advice out there was never designed for where you are right now. Within Your Way is different. It starts with you.
+      </p>
+      <a href="#subscribe" class="btn-primary">I'm Ready to Explore</a>
+      <p class="hero-note">You don't have to figure this out alone.</p>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MIRROR -->
+  <section class="mirror">
+    <div class="container">
+      <div class="mirror-grid">
+        <div class="mirror-aside reveal">
+          <div class="mirror-rule"></div>
+          <p class="mirror-quote">"You don't need more information. You need a way to understand your body, on your terms."</p>
+        </div>
+        <div class="reveal reveal--delay-1">
+          <span class="section-label">If this sounds familiar</span>
+          <h2>You're in the <em>right place</em></h2>
+          <p>You've done the research. You've tried the plans. You've started again more times than you want to count — and each time, something didn't fit. The food was too restrictive, the advice too generic, the results too short-lived.</p>
+          <p>And somewhere along the way, quietly and without drama, you started to wonder if this is just how it is now.</p>
+          <p>You're not broken. You're not failing. And this is not a willpower problem.</p>
+          <p>Your body is a complex, shifting ecosystem — not a maths equation. What works for someone else may do nothing for you, and what worked for you five years ago may no longer apply. The frustrating truth is that most advice was never designed with that in mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASES -->
+  <section class="phases" style="display:none;">
+    <div class="container">
+      <div class="phases-header reveal">
+        <span class="section-label">The 21-Day Reset Framework</span>
+        <h2>This is not a programme.<br><em>It's an exploration.</em></h2>
+        <p>Most resets tell you what to do. This one asks you to pay attention.</p>
+      </div>
+
+      <div class="phases-grid">
+        <div class="phase reveal">
+          <div class="phase-number">01</div>
+          <span class="phase-tag">Days 1–7</span>
+          <h3>Audit</h3>
+          <p>Before anything changes, we notice what's actually happening. Not what should be happening — what is genuinely true, right now, in your body and your life. This is quieter and more revealing than it sounds.</p>
+        </div>
+        <div class="phase reveal reveal--delay-1">
+          <div class="phase-number">02</div>
+          <span class="phase-tag">Days 8–14</span>
+          <h3>Experiment</h3>
+          <p>Small, considered shifts. Not overhauls. You try things — swap, adjust, observe — and you notice what happens. Some things will surprise you. Some won't. All of it is useful. There are no wrong answers here, only information.</p>
+        </div>
+        <div class="phase reveal reveal--delay-2">
+          <div class="phase-number">03</div>
+          <span class="phase-tag">Days 15–21</span>
+          <h3>Integration</h3>
+          <p>You keep what felt good. You leave the rest behind — without guilt, without ceremony. What you're left with is something no generic programme could give you: an understanding of what actually works for you.</p>
+        </div>
+      </div>
+
+      <div class="phases-footer reveal">
+        <p>By Day 21 you won't only have a new set of rules to follow. You'll have something more valuable — a clearer sense of your own body, your own patterns, and your own way forward.</p>
+        <p><strong>This exploration is designed around bio-individuality.</strong> There is no single answer. There is only your answer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container">
+      <div class="about-aside reveal">
+        <div class="about-photo-placeholder">
+          <img src="about.png" alt="Within Your Way" style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;" />
+        </div>
+      </div>
+      <div class="reveal reveal--delay-1">
+        <span class="section-label">About</span>
+        <h2>Within Your Way exists because <em>I needed it</em></h2>
+        <p>I'm Annie. And I started Within Your Way because I needed it.</p>
+        <p>I know what it feels like to not recognise yourself. To do all the right things and have your body simply not respond the way it used to. To sit with that quiet, persistent exhaustion — not just physical, but the exhaustion of trying. Of conflicting advice. Of starting again on Monday.</p>
+        <p>I'm someone who has been in the middle of exactly this. Not looking in from the outside. Not standing at the finish line. In it.</p>
+        <p>The image beside these words is kintsugi — the Japanese art of mending broken things with gold. The philosophy is that what has cracked, and how it has been repaired, becomes the most beautiful and defining part of the whole. I think we are the same. The things we've struggled through, the parts of ourselves that feel worn or unfamiliar right now — these aren't flaws to fix or erase. They're where the gold goes.</p>
+        <p>I don't have all the answers. I'm learning, adjusting, being honest about what's working and what isn't — and sharing it as I go. What I do have is an absolute conviction that what most women are missing isn't more information. It's someone in their corner who actually gets it.</p>
+        <p>Whenever you're ready, there's a place here for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 6rem 3rem; background: #FDFAF7; border-top: 1px solid #E8E2DA;">
+    <div style="max-width: 780px; margin: 0 auto;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid #E8E2DA;">
+        <div>
+          <p style="font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: #9B7B5E; margin-bottom: 0.5rem; margin-top: 0;">From the journal</p>
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.2rem); color: #2C2420; margin: 0; font-style: italic;">Recent writing</h2>
+        </div>
+        <a href="journal.html" style="font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: #9B7B5E; text-decoration: none; white-space: nowrap;">All entries →</a>
+      </div>
+      <div style="margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid #E8E2DA;">
+        <p style="font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #9B7B5E; margin-bottom: 0.6rem; margin-top: 0;">May 2026</p>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(1.3rem, 2.5vw, 1.7rem); color: #2C2420; margin-bottom: 0.8rem; line-height: 1.2; margin-top: 0;">
+          <a href="/its-not-the-be-all-and-end-all-but-it-is-nice" style="color: inherit; text-decoration: none;">It's Not the Be All and End All. But It Is Nice.</a>
+        </h3>
+        <p style="font-family: 'Jost', sans-serif; font-size: 0.93rem; color: #5A4E44; line-height: 1.85; margin-bottom: 0.8rem; font-weight: 300;">I didn't start paying attention so that I would lose weight. But seeing the scale move is a nice byproduct. On what we've got wrong about the scale — in both directions.</p>
+        <a href="/its-not-the-be-all-and-end-all-but-it-is-nice" style="font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #9B7B5E; text-decoration: none;">Read →</a>
+      </div>
+      <div>
+        <p style="font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #9B7B5E; margin-bottom: 0.6rem; margin-top: 0;">April 2026</p>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(1.3rem, 2.5vw, 1.7rem); color: #2C2420; margin-bottom: 0.8rem; line-height: 1.2; margin-top: 0;">
+          <a href="this-is-day-1.html" style="color: inherit; text-decoration: none;">This is Day 1</a>
+        </h3>
+        <p style="font-family: 'Jost', sans-serif; font-size: 0.93rem; color: #5A4E44; line-height: 1.85; margin-bottom: 0.8rem; font-weight: 300;">What actually happened on the first day of my Reset. Not a curated version — the real one, including a blue lemon and a fridge I kept opening for no reason.</p>
+        <a href="this-is-day-1.html" style="font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #9B7B5E; text-decoration: none;">Read →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="community" style="scroll-margin-top: 0;">
+    <div class="container--narrow">
+      <div class="reveal">
+        <span class="section-label">A different kind of wellness</span>
+        <h2>Stop starting over. <em>Start understanding.</em></h2>
+        <div class="cta-divider"></div>
+        <p>If any of this resonates — the writing, the journey, the way of thinking about your body — come in. I write when I have something worth saying.</p>
+        <p class="cta-seat">There's a seat with your name on it.</p>
+        <div id="subscribe" style="margin-top: 2rem; max-width: 480px; margin-left: auto; margin-right: auto;">
+          <div class="ml-embedded" data-form="gayDpq"></div>
+        </div>
+        <p style="margin-top: 1.5rem; font-family: 'Jost', sans-serif; font-size: 0.85rem; color: #9B7B5E; font-style: italic; text-align: center;">
+          Articles and honest writing from the journey are published in the <a href="journal.html" style="color: #6B5240;">Journal</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: #2C2420; text-align: center; padding: 2.4rem 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
+    <p style="font-family: 'Jost', sans-serif; font-size: 0.76rem; letter-spacing: 0.08em; color: #C4B8AE; margin-bottom: 0.6rem;">© 2026 Within Your Way</p>
+    <a href="https://www.instagram.com/withinyourway" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #C4B8AE; text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+      @withinyourway
+    </a>
   </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
